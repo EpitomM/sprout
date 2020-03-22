@@ -28,7 +28,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- online fonts-->
 	<link href="https://fonts.googleapis.com/css?family=Amiri:400,400i,700,700i" rel="stylesheet">
 	<style>
-		input [type="text"] {
+		input [type="text"],select {
 			width: 100%;
 			color: #fff;
 			outline: none;
@@ -62,10 +62,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="agile-field-txt">
 					<input type="text" name="telephone" placeholder="请输入手机号" required="">
 				</div>
-				<select id="country" name = "status" class="agile-field-txt">
+				<select id="country" name = "status" class="agile-field-txt" >
 					<!--<select id="country" name = "orderTime"onchange="change_country(this.value)" class="frm-field required">-->
 					<option value="AX"></option>
-					<option value="0">农民</option>
+					<option value="0" selected>农民</option>
 					<option value="1">专家</option>
 					<option value="2">卖家</option>
 					<option value="3">记者</option>

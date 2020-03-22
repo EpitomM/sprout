@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>zMatcha - Free Html5 Templates</title>
+    <meta name="description" content="Free Responsive Html5 Css3 Templates">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+  ================================================== -->
+    <!-- Definity CSS -->
+    <link href="/css/zerogrid.css" rel="stylesheet" media="all" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" media="all" type="text/css">
+    <link href="/css/menu.css" rel="stylesheet" media="all" type="text/css">
+    <!-- Lightbox -->
+    <link href="/css/lightbox.css" rel="stylesheet" media="all" type="text/css">
+    <!-- Video Background -->
+    <link href="/css/jquery.mb.ytplayer.min.css" rel="stylesheet" media="all" type="text/css">
+    <!-- Animate.css -->
+    <link href="/css/animate.css" rel="stylesheet" media="all" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Owl Carousel Assets -->
+    <link href="/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <!-- <link href="owl-carousel/owl.theme.css" rel="stylesheet"> -->
+
+    <!-- JS -->
+
+    <!--[if lt IE 8]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+    </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <script src="/js/css3-mediaqueries.js"></script>
+    <![endif]-->
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="zerogrid">
+    <div class="wrap-box"><!--Start Box-->
+        <div class="header wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
+            <h2>What people are saying</h2>
+            <span class="intro">Lorem ipsum dolor sit amet consectetur adipisicing</span>
+            <a href="product/listAllProducts">查看更多</a>
+        </div>
+        <div class="content wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">
+            <div class="row">
+                <div class="lg-1-3 md-1-3 sm-1-2" th:each="product:${products}">
+                    <div class="wrap-col">
+                        <div class="product">
+                            <div class="product-thumbnail"><a href="#"><img th:src="@{${product.image}}" style="width: 350px;height: 230px"/></a></div>
+                            <div class="product-content">
+                                <div class="row">
+                                    <h2 class="product-title"><a href="#" th:text="${product.name}" style="width: 200px"></a></h2>
+                                </div>
+                                <div class="row">
+                                    <div class="categories">
+                                        <a href="#" rel="tag" th:text="${product.classification}"></a>
+                                    </div>
+                                    <span class="price" th:text="${product.price}"></span>
+                                </div>
+                                <div class="row">
+                                    <p th:text="${product.description}" style="text-indent:2em;height: 108px"></p>
+                                </div>
+                                <div class="row">
+                                    库存：<span th:text="${product.stock}"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    产地：<span th:text="${product.mername}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="lg-1-4 md-1-3 sm-1-2">-->
+<!--                    <div class="wrap-col">-->
+<!--                        <div class="product">-->
+<!--                            <div class="product-thumbnail"><a href="#"><img src="/images/p2.jpg"></a></div>-->
+<!--                            <div class="product-content">-->
+<!--                                <div class="row">-->
+<!--                                    <h2 class="product-title"><a href="#">Green decor</a></h2>-->
+<!--                                    <div class="product-rating">-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star-o"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="categories">-->
+<!--                                        <a href="#" rel="tag">Accessories</a>, <a href="#" rel="tag">Plants</a>-->
+<!--                                    </div>-->
+<!--                                    <span class="price">-->
+<!--														$290.00-->
+<!--													</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="lg-1-4 md-1-3 sm-1-2">-->
+<!--                    <div class="wrap-col">-->
+<!--                        <div class="product">-->
+<!--                            <div class="product-thumbnail"><a href="#"><img src="/images/p3.jpg"></a></div>-->
+<!--                            <div class="product-content">-->
+<!--                                <div class="row">-->
+<!--                                    <h2 class="product-title"><a href="#">Green decor</a></h2>-->
+<!--                                    <div class="product-rating">-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star-o"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="categories">-->
+<!--                                        <a href="#" rel="tag">Accessories</a>, <a href="#" rel="tag">Plants</a>-->
+<!--                                    </div>-->
+<!--                                    <span class="price">-->
+<!--														$290.00-->
+<!--													</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="lg-1-4 md-1-3 sm-1-2">-->
+<!--                    <div class="wrap-col">-->
+<!--                        <div class="product">-->
+<!--                            <div class="product-thumbnail"><a href="#"><img src="images/p4.jpg"></a></div>-->
+<!--                            <div class="product-content">-->
+<!--                                <div class="row">-->
+<!--                                    <h2 class="product-title"><a href="#">Green decor</a></h2>-->
+<!--                                    <div class="product-rating">-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star-o"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="categories">-->
+<!--                                        <a href="#" rel="tag">Accessories</a>, <a href="#" rel="tag">Plants</a>-->
+<!--                                    </div>-->
+<!--                                    <span class="price">-->
+<!--														$290.00-->
+<!--													</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+<!--            <div class="row">-->
+<!--                <div class="lg-1-4 md-1-3 sm-1-2">-->
+<!--                    <div class="wrap-col">-->
+<!--                        <div class="product">-->
+<!--                            <div class="product-thumbnail"><a href="#"><img src="/images/p5.jpg"></a></div>-->
+<!--                            <div class="product-content">-->
+<!--                                <div class="row">-->
+<!--                                    <h2 class="product-title"><a href="#">Green decor</a></h2>-->
+<!--                                    <div class="product-rating">-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star-o"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="categories">-->
+<!--                                        <a href="#" rel="tag">Accessories</a>, <a href="#" rel="tag">Plants</a>-->
+<!--                                    </div>-->
+<!--                                    <span class="price">-->
+<!--														$290.00-->
+<!--													</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="lg-1-4 md-1-3 sm-1-2">-->
+<!--                    <div class="wrap-col">-->
+<!--                        <div class="product">-->
+<!--                            <div class="product-thumbnail"><a href="#"><img src="/images/p6.jpg"></a></div>-->
+<!--                            <div class="product-content">-->
+<!--                                <div class="row">-->
+<!--                                    <h2 class="product-title"><a href="#">Green decor</a></h2>-->
+<!--                                    <div class="product-rating">-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star-o"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="categories">-->
+<!--                                        <a href="#" rel="tag">Accessories</a>, <a href="#" rel="tag">Plants</a>-->
+<!--                                    </div>-->
+<!--                                    <span class="price">-->
+<!--														$290.00-->
+<!--													</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="lg-1-4 md-1-3 sm-1-2">-->
+<!--                    <div class="wrap-col">-->
+<!--                        <div class="product">-->
+<!--                            <div class="product-thumbnail"><a href="#"><img src="/images/p7.jpg"></a></div>-->
+<!--                            <div class="product-content">-->
+<!--                                <div class="row">-->
+<!--                                    <h2 class="product-title"><a href="#">Green decor</a></h2>-->
+<!--                                    <div class="product-rating">-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star-o"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="categories">-->
+<!--                                        <a href="#" rel="tag">Accessories</a>, <a href="#" rel="tag">Plants</a>-->
+<!--                                    </div>-->
+<!--                                    <span class="price">-->
+<!--														$290.00-->
+<!--													</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="lg-1-4 md-1-3 sm-1-2">-->
+<!--                    <div class="wrap-col">-->
+<!--                        <div class="product">-->
+<!--                            <div class="product-thumbnail"><a href="#"><img src="/images/p8.jpg"></a></div>-->
+<!--                            <div class="product-content">-->
+<!--                                <div class="row">-->
+<!--                                    <h2 class="product-title"><a href="#">Green decor</a></h2>-->
+<!--                                    <div class="product-rating">-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star"></i>-->
+<!--                                        <i class="fa fa-star-o"></i>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="row">-->
+<!--                                    <div class="categories">-->
+<!--                                        <a href="#" rel="tag">Accessories</a>, <a href="#" rel="tag">Plants</a>-->
+<!--                                    </div>-->
+<!--                                    <span class="price">-->
+<!--														$290.00-->
+<!--													</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>

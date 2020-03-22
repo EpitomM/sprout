@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <properties resource="application.properties"/>
+    <!-- 必须要有这个 mysql驱动的位置 这个是MySQL连接的jar包，你需要指定你自己计算机上的jar包的位置-->
+    <!--不要傻乎乎的只复制路径，不复制jar包名字-->
+    <classPathEntry location="C:\Users\Only\IdeaProjects\AppointmentSystem\lib\mysql-connector-java-5.1.39.jar"/>
+
+    <context id="Tables" targetRuntime="MyBatis3">
+
+        <!-- 注释 -->
+        <commentGenerator>
+            <!-- 是否生成注释代时间戳 -->
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+
+        <!-- JDBC连接 其中connectionURL后面的newtest改为你创建的数据库，紧跟在后面是数据库连接的账户和密码-->
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/farming"
+                userId="root"
+                password="123456">
+        </jdbcConnection>
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+         NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 生成实体类地址 这里需要你改动，其中targetPackage需要根据你自己创建的目录进行改动 -->
+        <javaModelGenerator targetPackage="com.ssm.farming.pojo" targetProject="src/main/java">
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaModelGenerator>
+
+        <!-- 生成mapper xml文件 这里不需要改动 -->
+        <sqlMapGenerator targetPackage="mapper"  targetProject="src/main/resources">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- 生成mapper xml对应Client   这里需要改动targetPackage，依据你自己的工程-->
+        <javaClientGenerator targetPackage="com.ssm.farming.mapper" targetProject="src/main/java" type="XMLMAPPER">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!-- 配置表信息 -->
+        <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample
+            是否生成 example类 -->
+
+<!--        <table schema="farming" tableName="tb_expert"-->
+<!--               domainObjectName="Expert" enableCountByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               enableUpdateByExample="true">-->
+<!--        </table>-->
+<!--        <table schema="farming" tableName="tb_farmer"-->
+<!--               domainObjectName="Farmer" enableCountByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               enableUpdateByExample="true">-->
+<!--        </table>-->
+<!--        <table schema="farming" tableName="tb_news"-->
+<!--               domainObjectName="News" enableCountByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               enableUpdateByExample="true">-->
+<!--        </table>-->
+<!--        <table schema="farming" tableName="tb_product"-->
+<!--               domainObjectName="Product" enableCountByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               enableUpdateByExample="true">-->
+<!--        </table>-->
+<!--        <table schema="farming" tableName="tb_user"-->
+<!--               domainObjectName="User" enableCountByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               enableUpdateByExample="true">-->
+<!--        </table>-->
+<!--        <table schema="farming" tableName="tb_region"-->
+<!--               domainObjectName="Region" enableCountByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               enableUpdateByExample="true">-->
+<!--        </table>-->
+        <table schema="farming" tableName="tb_article"
+               domainObjectName="Article" enableCountByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+        </table>
+<!--        <table schema="farming" tableName="tb_reporter"-->
+<!--               domainObjectName="Reporter" enableCountByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               enableUpdateByExample="true">-->
+<!--        </table>-->
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="左右结构项目，属于大人员的社交工具">
+        <meta name="keywords" content="左右结构项目 社交 占座 ">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>萌芽 - 专家模块</title>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script>
+            $(function() {
+                $(".meun-item").click(function() {
+                    $(".meun-item").removeClass("meun-item-active");
+                    $(this).addClass("meun-item-active");
+                    var itmeObj = $(".meun-item").find("img");
+                    itmeObj.each(function() {
+                        var items = $(this).attr("src");
+                        items = items.replace("_grey.png", ".png");
+                        items = items.replace(".png", "_grey.png")
+                        $(this).attr("src", items);
+                    });
+                    var attrObj = $(this).find("img").attr("src");
+                    ;
+                    attrObj = attrObj.replace("_grey.png", ".png");
+                    $(this).find("img").attr("src", attrObj);
+                });
+                $("#topAD").click(function() {
+                    $("#topA").toggleClass(" glyphicon-triangle-right");
+                    $("#topA").toggleClass(" glyphicon-triangle-bottom");
+                });
+                $("#topBD").click(function() {
+                    $("#topB").toggleClass(" glyphicon-triangle-right");
+                    $("#topB").toggleClass(" glyphicon-triangle-bottom");
+                });
+                $("#topCD").click(function() {
+                    $("#topC").toggleClass(" glyphicon-triangle-right");
+                    $("#topC").toggleClass(" glyphicon-triangle-bottom");
+                });
+                $(".toggle-btn").click(function() {
+                    $("#leftMeun").toggleClass("show");
+                    $("#rightContent").toggleClass("pd0px");
+                })
+            })
+        </script>
+        <!--[if lt IE 9]>
+  <script src="/js/html5shiv.min.js"></script>
+  <script src="/js/respond.min.js"></script>
+<![endif]-->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/css/common.css" />
+        <link rel="stylesheet" type="text/css" href="/css/slide.css" />
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/flat-ui.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/jquery.nouislider.css">
+    </head>
+
+    <body>
+        <div id="wrap">
+            <!-- 左侧菜单栏目块 -->
+            <div class="leftMeun" id="leftMeun">
+                <div id="logoDiv">
+                    <p id="logoP"><img id="logo" alt="左右结构项目" src="/images/logo.png"><span>专家栏目</span></p>
+                </div>
+                <div id="personInfor">
+                    <p>欢迎您，</p>
+                    <p id="userName" th:text="${user.name}"></p>
+                    <p>
+                        <a href="http://localhost:8080/">退出登录</a>
+                    </p>
+                </div>
+                <div class="meun-title">账号管理</div>
+                <div class="meun-item meun-item-active" href="#sour" aria-controls="sour" role="tab" data-toggle="tab"><img src="/images/icon_source.png">添加信息</div>
+                <div class="meun-item" href="#char" aria-controls="char" role="tab" data-toggle="tab"><img src="/images/icon_chara_grey.png">权限管理</div>
+                <div class="meun-item" href="#user" aria-controls="user" role="tab" data-toggle="tab"><img src="/images/icon_user_grey.png">用户管理</div>
+                <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><img src="/images/icon_change_grey.png">修改密码</div>
+                <div class="meun-title">地区管理</div>
+                <div class="meun-item" href="#scho" aria-controls="scho" role="tab" data-toggle="tab"><img src="/images/icon_house_grey.png">地区管理</div>
+                <div class="meun-item" href="#regu" aria-controls="regu" role="tab" data-toggle="tab"><img src="/images/icon_rule_grey.png">规则管理</div>
+                <div class="meun-item" href="#stud" aria-controls="stud" role="tab" data-toggle="tab"><img src="/images/icon_card_grey.png">人员信息</div>
+                <div class="meun-item" href="#sitt" aria-controls="sitt" role="tab" data-toggle="tab"><img src="/images/icon_char_grey.png">座位管理</div>
+            </div>
+            <!-- 右侧具体内容栏目 -->
+            <div role="tabpanel" class="tab-pane" id="chan">
+                <div class="check-div">
+                    请添加所在报社
+                </div>
+                <div style="padding: 50px 0;margin-top: 50px;background-color: #fff; text-align: right;width: 420px;margin: 50px auto;">
+                    <form class="form-horizontal" action="/reporter/update" method="post">
+                        <div class="form-group">
+                            <label for="sKnot" class="col-xs-4 control-label">请添加所在报社：</label>
+                            <div class="col-xs-5">
+                                <input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;" name="office">
+                            </div>
+                        </div>
+                        <div class="form-group text-right">
+                            <div class="col-xs-offset-4 col-xs-5" style="margin-left: 169px;">
+                                <input th:value="${user.id}" name="userId" style="display: none">
+                                <button type="reset" class="btn btn-xs btn-white">取 消</button>
+                                <input type="submit" class="btn btn-xs btn-green"></input>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+</div>
+<!-- 滑块js -->
+<!--	<script type="text/javascript">
+        scale = function(btn, bar, title, unit) {
+                this.btn = document.getElementById(btn);
+                this.bar = document.getElementById(bar);
+                this.title = document.getElementById(title);
+                this.step = this.bar.getElementsByTagName("div")[0];
+                this.unit = unit;
+                this.init();
+        };
+        scale.prototype = {
+                init: function() {
+                        var f = this,
+                                g = document,
+                                b = window,
+                                m = Math;
+                        f.btn.onmousedown = function(e) {
+                                var x = (e || b.event).clientX;
+                                var l = this.offsetLeft;
+//						var max = f.bar.offsetWidth - this.offsetWidth;
+                                var max = f.bar.offsetWidth-20 ;
+                                g.onmousemove = function(e) {
+                                        var thisX = (e || b.event).clientX;
+                                        var to = m.min(max, m.max(-2, l + (thisX - x)));
+                                        f.btn.style.left = to+ 'px';
+                                        f.ondrag(m.round(m.max(0, to / max) * 100), to);
+                                        b.getSelection ? b.getSelection().removeAllRanges() : g.selection.empty();
+                                };
+                                g.onmouseup = new Function('this.onmousemove=null');
+                        };
+                },
+                ondrag: function(pos, x) {
+                        this.step.style.width = Math.max(0, x) +2+ 'px';
+                        this.title.innerHTML = pos / 10 + this.unit + "";
+                }
+        }
+        new scale('btn0', 'bar0', 'title0', "分钟");
+        new scale('btn1', 'bar1', 'title1', "分钟");
+        new scale('btn2', 'bar2', 'title2', "天");
+        new scale('btn3', 'bar3', 'title3', "次");
+</script>
+-->
+<script src="/js/jquery.nouislider.js"></script>
+
+<!-- this page specific inline scripts -->
+<script>
+                                                //min/max slider
+                                                function huadong(my, unit, def, max) {
+                                                    $(my).noUiSlider({
+                                                        range: [0, max],
+                                                        start: [def],
+                                                        handles: 1,
+                                                        connect: 'upper',
+                                                        slide: function() {
+                                                            var val = Math.floor($(this).val());
+                                                            $(this).find(".noUi-handle").text(
+                                                                    val + unit
+                                                                    );
+                                                            console.log($(this).find(".noUi-handle").parent().parent().html());
+                                                        },
+                                                        set: function() {
+                                                            var val = Math.floor($(this).val());
+                                                            $(this).find(".noUi-handle").text(
+                                                                    val + unit
+                                                                    );
+                                                        }
+                                                    });
+                                                    $(my).val(def, true);
+                                                }
+                                                huadong('.slider-minmax1', "分钟", "5", 30);
+                                                huadong('.slider-minmax2', "分钟", "6", 15);
+                                                huadong('.slider-minmax3', "分钟", "10", 60);
+                                                huadong('.slider-minmax4', "次", "2", 10);
+                                                huadong('.slider-minmax5', "天", "3", 7);
+                                                huadong('.slider-minmax6', "天", "8", 10);
+</script>
+</body>
+
+</html>

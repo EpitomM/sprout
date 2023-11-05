@@ -43,6 +43,11 @@ public class UserController {
     public ModelAndView login(User user, HttpServletRequest request, Model model)throws Exception{
         ModelAndView mv = new ModelAndView();
 
+        // 参数校验。用户名或密码为空
+        if (user == null || user.getName() == null || user.getPassword() == null) {
+            return new ModelAndView("redirect:/index.html");
+        }
+
         // 首页显示文章信息
         ArticleExample articleExample = new ArticleExample();
         articleExample.createCriteria().getAllCriteria();
@@ -54,7 +59,8 @@ public class UserController {
         newsExample.createCriteria().getAllCriteria();
         List<News> news = newsMapper.selectByExample(newsExample);
         model.addAttribute("newsList",news);
-        
+
+        // 登陆校验：根据用户名密码查询用户
         user = userService.checkLogin(user.getName(),user.getPassword());
         if(user != null){
             request.getSession().setAttribute("user",user);
@@ -80,14 +86,10 @@ public class UserController {
                 mv.setViewName("/reporter_home");
         }
             return mv;
-        }else if(user == null){
-            ModelAndView mav = new ModelAndView("login");
-            User su = new User();
-//            su.setLoginInfo("用户名或密码不正确 ！");
-            request.getSession().setAttribute("login", su);
-            return mav;
+        } else {
+            // 用户名或密码错误
+            return new ModelAndView("redirect:/index.html");
         }
-        return null;
     }
 
     @RequestMapping("/register")
